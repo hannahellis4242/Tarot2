@@ -1,0 +1,10 @@
+FROM node:alpine
+WORKDIR /client
+COPY package.json .
+RUN npm i
+COPY tsconfig.json .
+COPY webpack.config.js .
+COPY public public
+COPY src src
+RUN npm run build
+CMD npm start

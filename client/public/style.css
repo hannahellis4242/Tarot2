@@ -1,0 +1,29 @@
+#table {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+}
+
+#control {
+  height: 20%;
+}
+
+.card {
+  aspect-ratio: 7/12;
+  height: 15svh;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.card img {
+  max-width: 100%;
+  min-width: 1%;
+}
+
+main {
+  height: 100svh;
+  width: 100svw;
+}
