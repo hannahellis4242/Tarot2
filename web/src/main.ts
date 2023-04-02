@@ -4,7 +4,7 @@ import path from "path";
 
 const app = express();
 app.use(json());
-app.use(express.static(path.join(__filename, "static")));
+app.use(express.static(path.join(__dirname, "static")));
 
 const deckHost = process.env.DECK_HOST || "localhost";
 const deckPort = process.env.DECK_PORT || 5000;
