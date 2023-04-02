@@ -1,11 +1,7 @@
 import axios from "axios";
 
 const getDeck = async () => {
-  const host = "deck";
-  const port = 5000;
-  const seed = Date.now().toString();
-  const { data } = await axios(`http://${host}:${port}/deck?seed=${seed}`);
-  console.log(data);
+  const { data } = await axios("/deck");
   return data;
 };
 const start = (images: string[]) => {
