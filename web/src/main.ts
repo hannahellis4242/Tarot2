@@ -1,8 +1,10 @@
 import axios from "axios";
 import express, { json } from "express";
+import morgan from "morgan";
 import path from "path";
 
 const app = express();
+morgan("dev");
 app.use(json());
 app.use(express.static(path.join(__dirname, "static")));
 
