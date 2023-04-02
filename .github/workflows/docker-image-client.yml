@@ -20,5 +20,5 @@ jobs:
 
       - name: Build And Push client2 Image
         run: |
-          docker build ./client2 --file client2/dockerfile --tag ghcr.io/hannahellis4242/tarot2/client:latest
+          docker build ./client --file client/dockerfile --tag ghcr.io/hannahellis4242/tarot2/client:latest
           docker push ghcr.io/hannahellis4242/tarot2/client:latest
