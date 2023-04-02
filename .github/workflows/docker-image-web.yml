@@ -1,9 +1,9 @@
-name: Docker Image CI - client
+name: Docker Image CI - web
 
 on:
   push:
     paths:
-      - "client/**"
+      - "web/**"
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Build And Push client2 Image
+      - name: Build And Push web Image
         run: |
-          docker build ./client --file client/dockerfile --tag ghcr.io/hannahellis4242/tarot2/client:latest
-          docker push ghcr.io/hannahellis4242/tarot2/client:latest
+          docker build . --file web/dockerfile --tag ghcr.io/hannahellis4242/tarot2/web:latest
+          docker push ghcr.io/hannahellis4242/tarot2/web:latest

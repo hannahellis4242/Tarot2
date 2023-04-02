@@ -1,18 +1,19 @@
 FROM node:alpine
 
 WORKDIR /client
-COPY ./client/package.json .
+COPY client/package.json .
 RUN npm i
-COPY ./client/tsconfig .
-COPY ./client/webpack.config.js .
-COPY ./client/public public
-COPY ./client/src src
-RUN npm build
+COPY client/tsconfig.json .
+COPY client/webpack.config.js .
+COPY client/public public
+COPY client/src src
+RUN npm run build
 
 WORKDIR /web
 RUN mv ../client/dist static
-COPY package.json .
+COPY web/package.json .
 RUN npm i
-COPY src src
+COPY web/tsconfig.json .
+COPY web/src src
 RUN npm run build
 CMD npm start
