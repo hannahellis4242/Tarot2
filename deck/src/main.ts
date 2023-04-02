@@ -15,7 +15,7 @@ const port = getPort(5000);
 const app = express();
 
 app.use(express.json());
-app.use(morgan("combined"));
+app.use(morgan("dev"));
 app.get("/deck", cors(), handleRequest);
 app.get("/", cors(), getHelp);
 

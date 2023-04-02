@@ -4,9 +4,9 @@ import morgan from "morgan";
 import path from "path";
 
 const app = express();
-morgan("dev");
+app.use(morgan("dev"));
 app.use(json());
-app.use(express.static(path.join(__dirname, "static")));
+app.use("/", express.static(path.join(__dirname, "..", "static")));
 
 const deckHost = process.env.DECK_HOST || "localhost";
 const deckPort = process.env.DECK_PORT || 5000;
@@ -14,7 +14,7 @@ app.get("/deck", async (req, res) => {
   const seed = Date.now().toString();
   try {
     const { data } = await axios.get(
-      `http:\\${deckHost}:${deckPort}\deck?seed=${seed}`
+      `http://${deckHost}:${deckPort}\deck?seed=${seed}`
     );
     res.json(data);
   } catch (e: any) {
