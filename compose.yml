@@ -2,10 +2,13 @@ version: "3.9"
 services:
   deck:
     image: ghcr.io/hannahellis4242/tarot2/deck:latest
+    build: ./deck
     ports:
       - "5000:5000"
   web:
     image: ghcr.io/hannahellis4242/tarot2/web:latest
+    build: 
+      dockerfile: ./web/dockerfile
     environment:
       - DECK_HOST=deck
       - DECK_PORT=5000
