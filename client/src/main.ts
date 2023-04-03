@@ -53,7 +53,7 @@ if (contoler) {
     } catch (e: any) {
       const errorParagraph = document.createElement("p");
       errorParagraph.classList.add("error");
-      errorParagraph.innerText = JSON.stringify(e);
+      errorParagraph.innerText = JSON.stringify(e, null, 2);
       document.body.appendChild(errorParagraph);
     }
   };
