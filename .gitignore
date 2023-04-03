@@ -104,4 +104,4 @@ dist
 .tern-port
 
 main/public/scripts
-web_serve/public
+web/static

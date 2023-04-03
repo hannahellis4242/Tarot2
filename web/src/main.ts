@@ -8,17 +8,22 @@ app.use(morgan("dev"));
 app.use(json());
 app.use("/", express.static(path.join(__dirname, "..", "static")));
 
-const deckHost = process.env.DECK_HOST || "localhost";
+const deckHost = process.env.DECK_HOST || "192.168.1.21";
 const deckPort = process.env.DECK_PORT || 5000;
-app.get("/deck", async (req, res) => {
+app.get("/deck", async (_, res) => {
+  console.log("/deck called");
   const seed = Date.now().toString();
+  console.log("seed ", seed);
   try {
-    const { data } = await axios.get(
-      `http://${deckHost}:${deckPort}\deck?seed=${seed}`
-    );
-    res.json(data);
+    const url = `http://${deckHost}:${deckPort}/deck`;
+    console.log(url);
+    const result = await axios.get(url, { params: { seed } });
+    console.log("data :", result);
+    res.json(result.data);
   } catch (e: any) {
-    res.sendStatus(500);
+    const message = JSON.stringify(e, null, 2);
+    console.log(message);
+    res.status(500).json(e);
   }
 });
 
