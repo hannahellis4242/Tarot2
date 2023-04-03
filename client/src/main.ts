@@ -42,13 +42,20 @@ if (contoler) {
   const button = document.createElement("button") as HTMLButtonElement;
   button.innerText = "start";
   button.onclick = async () => {
-    button.innerText = "refresh";
-    const { deck } = await getDeck();
-    start(
-      deck
-        .map((x: { num: number }) => x.num)
-        .map((i: number) => `img/img_${i}.jpg`)
-    );
+    try {
+      const { deck } = await getDeck();
+      button.innerText = "refresh";
+      start(
+        deck
+          .map((x: { num: number }) => x.num)
+          .map((i: number) => `img/img_${i}.jpg`)
+      );
+    } catch (e: any) {
+      const errorParagraph = document.createElement("p");
+      errorParagraph.classList.add("error");
+      errorParagraph.innerText = JSON.stringify(e);
+      document.body.appendChild(errorParagraph);
+    }
   };
   contoler.replaceChildren(button);
 }
